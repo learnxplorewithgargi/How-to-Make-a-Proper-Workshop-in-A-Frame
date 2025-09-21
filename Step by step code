@@ -1,1 +1,58 @@
+1️⃣ Floor & Room
+<!-- Floor -->
+<a-plane src="wood-texture.jpg" rotation="-90 0 0" width="30" height="30"></a-plane>
 
+<!-- Walls -->
+<a-box color="#e0e0e0" position="0 5 -15" depth="1" height="10" width="30"></a-box> <!-- back wall -->
+<a-box color="#e0e0e0" position="15 5 0" rotation="0 -90 0" depth="1" height="10" width="30"></a-box> <!-- right wall -->
+<a-box color="#e0e0e0" position="-15 5 0" rotation="0 90 0" depth="1" height="10" width="30"></a-box> <!-- left wall -->
+📝 Notes:
+Use a wood texture (free from cc0textures.com
+, ambientcg.com
+, or Polyhaven.com
+).
+Simple a-box walls = your workshop room.
+
+2️⃣ Tables / Workbenches
+<!-- Workbench -->
+<a-box color="#8B5A2B" position="0 1 -5" depth="2" height="1" width="4"></a-box> <!-- top -->
+<a-box color="#654321" position="-1.5 0.5 -5" depth="0.3" height="1" width="0.3"></a-box> <!-- left leg -->
+<a-box color="#654321" position="1.5 0.5 -5" depth="0.3" height="1" width="0.3"></a-box> <!-- right leg -->
+📝 Notes:
+This is a basic table made of boxes (top + legs).
+Later, swap with real 3D models of benches.
+
+3️⃣ Actual Tools (instead of shapes)
+Replace a-box, a-cylinder, etc. with 3D models (.glb / .gltf).
+You can find free models here:
+Sketchfab
+Poly Haven
+Google Poly Archive (via Poly Pizza)
+<a-asset-item id="hammerModel" src="hammer.glb"></a-asset-item>
+<a-entity gltf-model="#hammerModel" position="-2 1 -4" scale="0.5 0.5 0.5"></a-entity>
+📝 Notes:
+Put models inside <a-assets> for efficiency.
+Adjust scale so they fit your table.
+
+4️⃣ Cursor → Replace Dot with Hand
+A-Frame lets you use your own cursor image (e.g., a hand PNG).
+<!-- Camera + custom cursor -->
+<a-entity camera look-controls>
+  <a-cursor 
+    material="src: url(hand.png); transparent: true;" 
+    scale="0.1 0.1 0.1">
+  </a-cursor>
+</a-entity>
+📝 Notes:
+Replace hand.png with your own small image of a hand (transparent background works best).
+scale controls the cursor size.
+If you’re targeting VR controllers (like Oculus) → A-Frame has a built-in hand-controls:
+<a-entity hand-controls="hand: left"></a-entity>
+<a-entity hand-controls="hand: right"></a-entity>
+
+5️⃣ Lighting (to make it realistic)
+<a-light type="ambient" color="#ccc"></a-light>
+<a-light type="point" intensity="1" position="0 5 0"></a-light>
+📝 Notes:
+Ambient light = general brightness.
+Point light = like a bulb above the workbench.
